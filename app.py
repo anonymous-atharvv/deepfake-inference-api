@@ -4,10 +4,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np, io, tempfile, os
+import os, requests
 
 # --- CONFIG ---
 IMG_SIZE = 224
-MODEL_PATH = "model_epoch_03.h5"   # <-- your file
+
+
+MODEL_URL = "PASTE_YOUR_HF_MODEL_LINK_HERE"
+MODEL_PATH = "model_epoch_03.h5"
+
+if not os.path.exists(MODEL_PATH):
+    print("📥 Downloading model from HuggingFace...")
+    r = requests.get(MODEL_URL)
+    open(MODEL_PATH, "wb").write(r.content)
+    print("✅ Downloaded!")
+
 
 app = FastAPI()
 app.add_middleware(
