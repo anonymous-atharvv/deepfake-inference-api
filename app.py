@@ -10,7 +10,7 @@ import os, requests
 IMG_SIZE = 224
 
 
-MODEL_URL = "PASTE_YOUR_HF_MODEL_LINK_HERE"
+MODEL_URL = "https://huggingface.co/anonymousananta/deepfake_model/blob/main/model_epoch_03.h5"
 MODEL_PATH = "model_epoch_03.h5"
 
 if not os.path.exists(MODEL_PATH):
